@@ -6,7 +6,7 @@ import "./register.css";
 function Register() {
 
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [health, setHealth] = useState('');
   const [phone, setPhone] = useState('');
   const [birth, setBirth] = useState('');
   const [gender, setGender] = useState('');
@@ -16,7 +16,7 @@ function Register() {
     e.preventDefault();
     console.log("Clicked Successfully");
     try {
-      const response = await registerfunction(name, email, phone, birth, gender, mrn);
+      const response = await registerfunction(name, health, phone, birth, gender, mrn);
       console.log(response);
     }
 
@@ -35,22 +35,8 @@ function Register() {
             <h1>Create new account  </h1>
             <span>Already A Member?</span>
             <div className="form-wrapper">
-              <div className="text-row">
 
-                {/* DOCTOR OR PATIENT REGISTER */}
-                <div className="text-field radio">
-                  <label className="radio-label">
-                    <input type="radio" name="role" id="doctor" value="doctor" checked={role === 'doctor'} onChange={(e) => setRole(e.target.value)} />
-                    <span className="radio-button"></span> Doctor
-                  </label>
-                </div>
-                <div className="text-field radio">
-                  <label className="radio-label">
-                    <input type="radio" name="role" id="patient" value="patient" checked={role === 'patient'} onChange={(e) => setRole(e.target.value)} />
-                    <span className="radio-button"></span> Patient
-                  </label>
-                </div>
-              </div>
+
 
               {/* PERSONAL INFORMATION */}
               <div className="text-row">
@@ -63,10 +49,21 @@ function Register() {
                   <Phone size={32} color="#7CE395" strokeWidth={1.5} />
                 </div>
               </div>
+
+              {/* DOCTOR OR PATIENT REGISTER */}
               <div className="text-field column">
-                <input type="email" name="email" id="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <label className="text-field column">
+                  <input type="text" name="text" id="mrn" placeholder='MRN' value={mrn} onChange={(e) => setMrn(e.target.value)} />
+                </label>
+              </div>
+
+              {/* HEALTH CARD DETAILS */}
+              <div className="text-field column">
+                <input type="text" name="text" id="health" placeholder='Health Card' value={health} onChange={(e) => setHealth(e.target.value)} />
                 <Mail size={32} color="#7CE395" strokeWidth={1.5} />
               </div>
+
+              {/* DATE OF BIRTH */}    
               <div className="text-field column">
                 <input type="date" name="birth" id="birth" placeholder='mm/dd/yyyy' value={birth} onChange={(e) => setBirth(e.target.value)} />
                 <CalendarDays size={32} color="#7CE395" strokeWidth={1.5} />
