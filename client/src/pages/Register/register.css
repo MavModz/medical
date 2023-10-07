@@ -1,0 +1,167 @@
+:root {
+    --sidebar-light: #215273;
+    --sidebar-dark: #010C14;
+    --sidebar-bottom-light: #376B8E;
+    --sidebar-bottom-dark: #374f5f;
+    --border: #7CE395;
+    --main-body-light: #F4FBFF;
+    --main-body-dark: #05243A;
+    --background-white: #ffff;
+    --hover-effect: #2196F3;
+}
+
+.register-container {
+    width: 100vw;
+    height: 100vh;
+    background: var(--main-body-dark);
+}
+
+.register-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.register-wrapper {
+    min-width: 300px;
+    max-width: 600px;
+    width: 100%;
+    padding: 32px;
+}
+
+.register-wrapper>span,
+h1 {
+    color: var(--background-white);
+    padding: 10px 0px;
+}
+
+.text-field {
+    position: relative;
+}
+
+.text-field svg {
+    position: absolute;
+    right: -2px;
+    bottom: -4px;
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+}
+
+
+.text-field input {
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1px solid var(--sidebar-bottom-dark);
+    background: var(--sidebar-bottom-dark);
+    color: var(--main-body-light);
+    height: 50px;
+    max-width: 100%;
+    width: 100%;
+    letter-spacing: .03rem;
+    outline: none;
+    transition: .25s;
+    border-radius: 8px;
+    text-indent: 20px;
+    margin-top: 1rem;
+}
+
+.text-field input[type="date"]::-webkit-input-placeholder {
+    text-indent: -100;
+    /* Adjust the left spacing */
+    padding-left: -10;
+    /* Adjust the left padding */
+}
+
+.text-field input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.text-field input::placeholder {
+    color: var(--main-body-light);
+    font-size: 15px;
+}
+
+.text-field input:focus::placeholder {
+    transform: translateY(-110%);
+    opacity: 0;
+    transition: transform 0.5s, font-size 0.3s, opacity 0.3s;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    gap: 0.5rem;
+}
+
+.text-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.text-field.radio {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.text-field input[type="radio"] {
+    height: 25px;
+    margin: 0;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    margin-right: 25px;
+    color: var(--background-white);
+}
+
+
+.radio-button {
+    display: inline-block;
+    width: 10px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.my-form_register_button {
+    background-color: var(--main-body-light);
+    color: var(--sidebar-bottom-dark);
+    white-space: nowrap;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    line-height: 50px;
+    outline: none;
+    font-size: 18px;
+    letter-spacing: .025em;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 800;
+    min-height: 50px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+}
+
+.my-form_register_button:hover {
+    background-color: var(--hover-effect);
+    color: var(--background-white);
+}
+
+
+@media (max-width: 768px) {
+    .register-wrapper {
+        margin-left: 0px;
+    }
+}
