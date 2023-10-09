@@ -1,9 +1,9 @@
 const users = require("../models/userSchema");
 
 exports.userregister = async (req, res) => {
-    const {name, phone, email, birth, gender, role }=req.body;
+    const {name, phone, mrn,  health, birth, gender } = req.body;
 
-    if (!name || !phone || !email|| !birth|| !gender || !role ){
+    if (!name || !phone || !mrn || !health || !birth || !gender  ){
       return  res.status(401).json({message:"Fill all fields"})
     }
 
@@ -17,10 +17,10 @@ exports.userregister = async (req, res) => {
         const newuser = new users({
           name,
           phone,
-          email,
+          mrn,
+          health,
           birth,
-          gender,
-          role
+          gender
         });
         const storeData= await newuser.save();
         res.status(200).json(storeData);
@@ -30,28 +30,4 @@ exports.userregister = async (req, res) => {
       }
   };
   
-  
-  //CHECK PHONE INFORMATION IN DATABASE
-  exports.userlogin = async (req, res) => {
-     const { phone } = req.body;
-  
-     const user = await users.findOne({ phone: phone });
-     
-     try{
-
-       if (!user) {
-         return res.send("Phone No. not found")
-        }
-        else {
-          res.status(201).json({ exists: true ,user});
-          console.log("Phone No. Match");
-        }
-      }
-    
-    catch (error) {
-      console.error("Error while querying MongoDB:", error);
-      res.status(500).json({ error: "Unable to connect with DB" });
-    }
-    
-  };
   

@@ -1,15 +1,14 @@
 import React from 'react';
 import Header from '../../Components/Header/Header';
 import Register from '../Register/Register';
-import './dashboard.css';
 
-function Dashboard() {
+function Reception() {
   return (
     <div>
         <Header />
-        < Register />
+        <Register />
     </div>
   )
 }
 
-export default Dashboard
+export default Reception

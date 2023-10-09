@@ -37,11 +37,11 @@ h1 {
     padding: 10px 0px;
 }
 
-.text-field {
+.text-field-register {
     position: relative;
 }
 
-.text-field svg {
+.text-field-register svg {
     position: absolute;
     right: -2px;
     bottom: -4px;
@@ -52,7 +52,7 @@ h1 {
 }
 
 
-.text-field input {
+.text-field-register input {
     font-size: 1rem;
     font-weight: 500;
     border: 1px solid var(--sidebar-bottom-dark);
@@ -69,23 +69,23 @@ h1 {
     margin-top: 1rem;
 }
 
-.text-field input[type="date"]::-webkit-input-placeholder {
+.text-field-register input[type="date"]::-webkit-input-placeholder {
     text-indent: -100;
     /* Adjust the left spacing */
     padding-left: -10;
     /* Adjust the left padding */
 }
 
-.text-field input[type="date"]::-webkit-calendar-picker-indicator {
+.text-field-register input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
 }
 
-.text-field input::placeholder {
+.text-field-register input::placeholder {
     color: var(--main-body-light);
     font-size: 15px;
 }
 
-.text-field input:focus::placeholder {
+.text-field-register input:focus::placeholder {
     transform: translateY(-110%);
     opacity: 0;
     transition: transform 0.5s, font-size 0.3s, opacity 0.3s;
@@ -104,13 +104,13 @@ h1 {
     gap: 1rem;
 }
 
-.text-field.radio {
+.text-field-register.radio {
     display: flex;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.text-field input[type="radio"] {
+.text-field-register input[type="radio"] {
     height: 25px;
     margin: 0;
 }

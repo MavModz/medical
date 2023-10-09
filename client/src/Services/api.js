@@ -1,9 +1,9 @@
 import { commonrequest } from "./apiCalls";
 import { backend_url } from "./helper";
 
-export const registerfunction = async(name, phone, email, birth, gender,role) => {
+export const registerfunction = async(name, health, phone, birth, gender, mrn) => {
     try {
-        const response = await commonrequest("POST", `${backend_url}/user/register`, {name: name, phone:phone, email: email, birth: birth, gender:gender, role:role});
+        const response = await commonrequest("POST", `${backend_url}/user/register`, {name: name, phone:phone, health: health, birth: birth, gender: gender, mrn: mrn});
         return response.data;
     }
     catch(error) {
@@ -14,7 +14,7 @@ export const registerfunction = async(name, phone, email, birth, gender,role) =>
 
 export const loginfunction = async(phone) => {
     try {
-        const response = await commonrequest("POST", `${backend_url}/user/login`, {phone: phone});
+        const response = await commonrequest("POST", `${backend_url}/admin/login`, {phone: phone});
         return response.data;
     }
     catch(error) {

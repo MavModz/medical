@@ -11,7 +11,12 @@ const userSchema = new mongoose.Schema({
         unique: true,
         required: true,
     },
-    email:{
+    mrn:{
+        type: String,
+        unique: true,
+        required: true,
+    },
+    health:{
         type: String,
         unique: true,
         required: true,
@@ -22,11 +27,6 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     gender:{
-        type: String,
-        unique: true,
-        required: true,
-    },
-    role:{
         type: String,
         required: true,
     }

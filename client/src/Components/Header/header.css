@@ -50,11 +50,15 @@ p {
     background-color: var(--primary-white);
 }
 
+  
+
 .nav-item-content {
     display: flex;
     align-items: center;
     gap: 8px;
     font-weight: 600;
+    color: inherit; /* Use the same color as the parent */
+    text-decoration: none; /* Remove underline */
 }
 
 .nav-button-wrapper {
