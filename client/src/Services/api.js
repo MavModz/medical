@@ -12,9 +12,9 @@ export const registerfunction = async(name, health, phone, birth, gender, mrn) =
 }
 
 
-export const loginfunction = async(phone) => {
+export const loginfunction = async(email, password) => {
     try {
-        const response = await commonrequest("POST", `${backend_url}/admin/login`, {phone: phone});
+        const response = await commonrequest("POST", `${backend_url}/admin/login`, {email: email, password: password});
         return response.data;
     }
     catch(error) {

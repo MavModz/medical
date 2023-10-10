@@ -1,7 +1,10 @@
 const admins = require("../models/adminSchema");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const SECRET_KEY = process.env.key;
 
 exports.adminregister = async (req, res) => {
-    const { name, phone, email, birth, gender } = req.body;
+    const { name, phone, email, password, birth, gender } = req.body;
     if (!name || !phone || !email || !password || !birth || !gender) {
         return res.status(401).json({ message: "Fill all fields" })
     }
@@ -29,22 +32,33 @@ exports.adminregister = async (req, res) => {
 };
 
 
-exports.adminlogin = async(req, res) => {
-    const {email, pass} = req.body;
-    const admin = await admins.findOne({ email: email, password: password });
+exports.adminlogin = async (req, res) => {
+    const { email, password } = req.body;
+    const admin = await admins.findOne({ email: email });
 
     try {
-        if(!admin) {
-            return res.send("Admin not found")
-        }
+        if (admin) {
+            const isPasswordValid = await bcrypt.compare(password, admin.password);
 
+            if (!isPasswordValid) {
+                return res.status(401).json({ message: "Incorrect Password" });
+            }
+            console.log("Admin Match");
+
+            const login_token = jwt.sign(
+                {
+                    email: admin.email,
+                    id: admin._id,
+                },
+                SECRET_KEY
+            );
+            res.status(200).json({ exists: true, admin: admin, token: login_token });
+        } 
         else {
-            res.status(200).json({exist: true, admin})
-            console.log("Admin Match")
+            return res.status(401).json({ message: "Admin not found" });
         }
+    } catch (error) {
+        console.error("Error during password comparison:", error);
+        res.status(500).json({ message: "Internal server error" });
     }
-
-    catch (error) {
-        console.log("Internal server",error)
-    }
-}
+};

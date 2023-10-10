@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { User, Mail, Phone, CalendarDays, CreditCard } from 'lucide-react';
 import { registerfunction } from "../../Services/api";
+import Success from '../../Components/Popups/Success';
 import "./register.css";
 
 function Register() {
@@ -11,6 +12,11 @@ function Register() {
   const [birth, setBirth] = useState('');
   const [gender, setGender] = useState('');
   const [mrn, setMrn] = useState('');
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const ClosePopup = () => {
+    setShowSuccess(false);
+  };
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -18,6 +24,7 @@ function Register() {
     try {
       const response = await registerfunction(name, health, phone, birth, gender, mrn);
       console.log(response);
+      setShowSuccess(true);
     }
 
     catch (error) {
@@ -95,6 +102,9 @@ function Register() {
           </div>
         </div>
       </div>
+      {showSuccess && (
+        <Success onClose={ClosePopup} />
+      )}
     </div>
   )
 }
