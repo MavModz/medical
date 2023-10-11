@@ -19,14 +19,13 @@ const Login = () => {
       const response = await loginfunction(email, password);
       console.log(response);
       if (response && response.exists) {
-        console.log(response.email);
         const { token } = response;
         sessionStorage.setItem("auth_token", token)
-        navigate('/dashboard');
+        navigate('/reception');
       }
       else {
         console.log("Fetching error");
-        navigate('/register');
+        navigate('/');
       }
     } catch (error) {
       console.log("Server Error", error);
